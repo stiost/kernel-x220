@@ -2,51 +2,37 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux               # Build stock -ARCH kernel
-#pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-3.7
-pkgver=3.7.9
+#pkgbase=linux               # Build stock -ARCH kernel
+pkgbase=linux-custom       # Build kernel with a different name
+_srcname=linux-3.8.1
+pkgver=3.8.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl')
 options=('!strip')
-source=("http://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
-        "http://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.xz"
+source=("http://linux-kernel.uio.no/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        'fat-3.6.x.patch')
-md5sums=('21223369d682bcf44bcdfe1521095983'
-         '375fa67b3daba9e6040f13a0a29bf543'
+        'change-default-console-loglevel.patch')
+md5sums=('093b172f907d5455a6746418ad18f5bc'
          '6a6b620836639fa5f989f9c9c2592d6e'
-         '03666db0cd0a1f59c0b71b41eb2353eb'
+         'c4164639f1ccfa54bccfebc54c93daa3'
          'eb14dcfd80c00852ef81ded6e826826a'
-         '9d3c56a4b999c8bfbd4018089a62f662'
-         '88d501404f172dac6fcb248978251560')
+         '9d3c56a4b999c8bfbd4018089a62f662')
 
 _kernelname=${pkgbase#linux}
 
 build() {
   cd "${srcdir}/${_srcname}"
 
-  # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
-
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix cosmetic fat issue
-  # https://bugs.archlinux.org/task/32916
-  patch -Np1 -i "${srcdir}/fat-3.6.x.patch"
+  #patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
