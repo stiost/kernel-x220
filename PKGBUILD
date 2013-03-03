@@ -6,7 +6,7 @@
 pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.8.1
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
