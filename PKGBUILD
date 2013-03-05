@@ -6,7 +6,7 @@
 pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-3.8.1
 pkgver=3.8.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -20,7 +20,7 @@ source=("http://linux-kernel.uio.no/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 md5sums=('093b172f907d5455a6746418ad18f5bc'
          '6a6b620836639fa5f989f9c9c2592d6e'
-         '4d53d1615e5249dca8c8bef26f5b2cc2'
+         'b1f21bdad9447b27ef56462f921a4767'
          'eb14dcfd80c00852ef81ded6e826826a'
          '9d3c56a4b999c8bfbd4018089a62f662')
 
