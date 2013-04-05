@@ -4,8 +4,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-3.8.4
-pkgver=3.8.4
+_srcname=linux-3.8.6
+pkgver=3.8.6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -18,9 +18,9 @@ source=("http://linux-kernel.uio.no/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-md5sums=('ad19f1be181408124a7f9d8cf57b97b4'
+md5sums=('0934e6b31931c1832e48a28bd35ef27f'
          '6a6b620836639fa5f989f9c9c2592d6e'
-         'b67f3df54bb8c1310c4cd8cdcbb10b38'
+         '3c0b8a1b0171c74e2f31f065cd466d29'
          'eb14dcfd80c00852ef81ded6e826826a'
          'f3def2cefdcbb954c21d8505d23cc83c')
 

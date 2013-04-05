@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86_64 3.8.3-1 Kernel Configuration
+# Linux/x86_64 3.8.6-1 Kernel Configuration
 #
 CONFIG_64BIT=y
 CONFIG_X86_64=y
@@ -3377,6 +3377,8 @@ CONFIG_MEMORY=y
 # CONFIG_EDD is not set
 CONFIG_FIRMWARE_MEMMAP=y
 CONFIG_EFI_VARS=y
+CONFIG_EFI_VARS_PSTORE=y
+# CONFIG_EFI_VARS_PSTORE_DEFAULT_DISABLE is not set
 # CONFIG_DELL_RBU is not set
 # CONFIG_DCDBAS is not set
 CONFIG_DMIID=y
