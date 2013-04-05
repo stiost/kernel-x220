@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 178211 2013-02-18 07:06:46Z foutrelis $
+# $Id: PKGBUILD 181691 2013-04-04 06:32:27Z foutrelis $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-3.8.3
-pkgver=3.8.3
+_srcname=linux-3.8.4
+pkgver=3.8.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -18,7 +18,7 @@ source=("http://linux-kernel.uio.no/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-md5sums=('eb59b1fc7343db96e20c85a9cf2baa9f'
+md5sums=('ad19f1be181408124a7f9d8cf57b97b4'
          '6a6b620836639fa5f989f9c9c2592d6e'
          'b67f3df54bb8c1310c4cd8cdcbb10b38'
          'eb14dcfd80c00852ef81ded6e826826a'
@@ -32,7 +32,7 @@ build() {
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
-  #patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
+  patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
@@ -164,7 +164,7 @@ _package-headers() {
 
   mkdir -p "${pkgdir}/usr/src/linux-${_kernver}/include"
 
-  for i in acpi asm-generic config crypto drm generated linux math-emu \
+  for i in acpi asm-generic config crypto drm generated keys linux math-emu \
     media net pcmcia scsi sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/src/linux-${_kernver}/include/"
   done
