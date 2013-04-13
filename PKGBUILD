@@ -4,8 +4,8 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-3.8.6
-pkgver=3.8.6
+_srcname=linux-3.8.7
+pkgver=3.8.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -18,7 +18,7 @@ source=("http://linux-kernel.uio.no/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch')
-md5sums=('0934e6b31931c1832e48a28bd35ef27f'
+md5sums=('37ce9b5cc33551b45fea59c1c4c9da13'
          '6a6b620836639fa5f989f9c9c2592d6e'
          '3c0b8a1b0171c74e2f31f065cd466d29'
          'eb14dcfd80c00852ef81ded6e826826a'
@@ -75,7 +75,7 @@ build() {
   ####################
   # stop here
   # this is useful to configure the kernel
-  #msg "Stopping build"; return 1
+  # msg "Stopping build"; return 1
   ####################
 
   # build!
